@@ -1,0 +1,5 @@
+#!cmd
+#maxlength=50000000
+#timeout=3600000
+
+C:\Users\Public\DCDSetup-Latest-X64.exe /S /v"/qn /norestart"
