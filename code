@@ -27,17 +27,19 @@ Copy-Item -Path ".\Dymo-Templates\*.*" -Destination "C:\Program Files\Common Fil
 
 "https://dymoreleasecontent.blob.core.windows.net/dymo-release/DLS8Setup8.7.4.exe" | Out-File -FilePath ".\Dymo-Installation-Notes.txt"
 
-"https://dymoreleasecontent.blob.core.windows.net/dymo-release/DCDWIN/DCDSetup1.6.1.7-X64.exe" | Out-File -FilePath ".\Dymo-Installation-Notes.txt" -Append
+$DYMOSetupDownloadURL = "https://dymoreleasecontent.blob.core.windows.net/dymo-release/DCDWIN/DCDSetup1.6.3.11-X64.exe"
+
+$DYMOSetupDownloadURL | Out-File -FilePath ".\Dymo-Installation-Notes.txt" -Append
 
 "C:\Program Files\Common Files\eClinicalWorks\plugin\Resources\DymoTemplates\Specimen.dymo" | Out-File -FilePath ".\Dymo-Installation-Notes.txt" -Append
 
 "C:\Program Files\Common Files\eClinicalWorks\plugin\Resources\DymoTemplates\Custom550_final.dymo" | Out-File -FilePath ".\Dymo-Installation-Notes.txt" -Append
 
-"https://chromewebstore.google.com/detail/printerlogic-extension-v1/bfgjjammlemhdcocpejaompfoojnjjfn" | Out-File -FilePath ".\Printerlogic-Extension-URL.txt" -Append
+"https://chromewebstore.google.com/detail/printerlogic-extension-v1/bfgjjammlemhdcocpejaompfoojnjjfn" | Out-File -FilePath ".\Printerlogic-Extension-URL.txt"
 
 
 try {
-    $response = Invoke-WebRequest 'https://dymoreleasecontent.blob.core.windows.net/dymo-release/DCDWIN/DCDSetup1.6.1.7-X64.exe' -OutFile DCDSetup1.6.1.7-X64.exe -ErrorAction Stop
+    $response = Invoke-WebRequest $DYMOSetupDownloadURL -OutFile DCDSetup-Latest-X64.exe -ErrorAction Stop
 
     Write-Host `n"Installing DYMO Connect 1.6.1.7"`n
 
@@ -49,11 +51,11 @@ try {
 
     }
 
-    $process = Start-Process -FilePath '.\DCDSetup1.6.1.7-X64.exe' -ArgumentList '/S /v"/qn /norestart"' -Verb RunAs -PassThru -Wait
+    $process = Start-Process -FilePath '.\DCDSetup-Latest-X64.exe' -ArgumentList '/S /v"/qn /norestart"' -Verb RunAs -PassThru -Wait
 
     if ($process.ExitCode -eq 0) {
 
-        Remove-Item -Path '.\DCDSetup1.6.1.7-X64.exe' -Force -ea 0
+        Remove-Item -Path '.\DCDSetup-Latest-X64.exe' -Force -ea 0
 
         Write-Host "Process finished successfully!" -ForegroundColor Green
 
