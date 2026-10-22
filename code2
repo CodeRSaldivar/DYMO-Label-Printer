@@ -2,4 +2,6 @@
 #maxlength=50000000
 #timeout=3600000
 
+taskkill /im msiexec.exe /f
+
 C:\Users\Public\DCDSetup-Latest-X64.exe /S /v"/qn /norestart"
