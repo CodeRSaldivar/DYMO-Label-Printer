@@ -41,7 +41,7 @@ $DYMOSetupDownloadURL | Out-File -FilePath ".\Dymo-Installation-Notes.txt" -Appe
 try {
     $response = Invoke-WebRequest $DYMOSetupDownloadURL -OutFile DCDSetup-Latest-X64.exe -ErrorAction Stop
 
-    Write-Host `n"Installing DYMO Connect 1.6.1.7"`n
+    Write-Host `n"Installing latest DYMO Connect..."`n
 
     $processes = "msiexec"
 
