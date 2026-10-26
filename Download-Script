@@ -4,6 +4,7 @@
 
 Push-Location -Path C:\Users\Public
 
+$DYMOSetupDownloadURL = "https://dymoreleasecontent.blob.core.windows.net/dymo-release/DCDWIN/DCDSetup1.6.3.11-X64.exe"
 
 try {
     $response = Invoke-WebRequest $DYMOSetupDownloadURL -OutFile DCDSetup-Latest-X64.exe -ErrorAction Stop
